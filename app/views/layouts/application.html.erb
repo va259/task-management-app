@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TaskManagementApp</title>
+    <title>Project</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%= csp_meta_tag %>  
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <%= link_to "Project app", root_path, class: 'navbar-brand' %>
+
+        <div class="navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
+              <li><%= link_to "Account", current_user %></li>
+              <li><%= link_to "Edit", edit_user_path(current_user)  %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path %></li>
+            <% else %>
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
+              <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <%= yield %>
+        </div>
+        <div class="col-lg-3">
+
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <footer>
+        <p>&copy; Project app 2022</p>
+      </footer>
+
+    </div> <!-- /container -->
   </body>
 </html>

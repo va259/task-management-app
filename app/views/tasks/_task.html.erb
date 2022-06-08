@@ -1,0 +1,16 @@
+<div class="col-sm-6 col-md-4">
+  <div class="thumbnail">
+
+    <%= content_tag 'div', '' %>
+
+    <div class="thumbnail-inner task-info-inner">
+      <div class="caption">
+        <div class="task-description">
+          <h3><%= link_to task.title, task_path(task) %></h3>
+          <h3><small><%= task.status %></small></h3>
+          <div class="buffer-both"><%= task.description %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
