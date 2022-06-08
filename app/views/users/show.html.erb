@@ -1,0 +1,20 @@
+<div>
+  <h1><%= @user.first_name %></h1>
+  
+  <div class="task-info row">
+    <div class="col-md-12">
+      <% if @user.tasks.any? %>
+        <h3>Tasks:</h3>
+        <div class="column">
+          <%= render partial: 'tasks/task', collection: @user.tasks %>
+        </div>
+      <% else %>
+        <p class="">Yay! No tasks assigned!</p>
+      <% end %>
+    </div>
+    
+    <% if @user == current_user %>
+      <p class=""><%= link_to "Edit account details", edit_user_path(@user), class: "btn-light" %></p>
+    <% end %>
+  </div>
+</div>
